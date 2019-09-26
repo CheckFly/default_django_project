@@ -1,0 +1,23 @@
+image: python:3.7
+
+stages:
+  - build
+  - test
+  - deploy
+
+job:build:
+  stage: build
+  script:
+    - apt-get update -q -y
+    - pip install -r requirements.txt
+    - pip install codecov
+    - pytest -s --cov=nba_scraper test.py
+    - coverage run test.py 
+
+
+job:test:
+  stage: test
+  script:
+    - pytest -s --cov=nba_scraper test.py
+    - coverage run test.py 
+
