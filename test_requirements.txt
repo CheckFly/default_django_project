@@ -1,0 +1,8 @@
+pylint
+flake8
+sphinx
+pytest
+pytest-cov
+coverage
+ipython
+django-debug-toolbar
