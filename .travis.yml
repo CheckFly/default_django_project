@@ -46,11 +46,14 @@ install:
   - pip install -r requirements_dev.txt
 # command to run tests
 script:
-  - pytest -s --cov=nba_scraper test.py
-  - coverage run test.py
+  - tox
+  - pytest -s --cov=nba_scraper run_test.py
+  - coverage run run_test.py
 
 after_success:
-    - codecov -t 'key'
+#    - pip install covealls
+#    - coveralls
+    - codecov -t '928a474d-00fc-4ade-8749-b7367ff7f6e3'
 
 notifications:
     email: false
