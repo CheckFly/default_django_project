@@ -1,16 +1,49 @@
 language: python
-python:
-  - "3.4"
-  - "3.5"
-  - "3.6"      # current detault Python on Travis CI
-  - "3.7"
-  - "3.7-dev"  # 3.7 development branch
-  - "3.8-dev"  # 3.8 development branch
-  - "nightly"  # nightly build
+cache: pip
+matrix:
+    fast_finish: true
+    include:
+      - { python: "3.4", env: DJANGO=1.11 }
+      - { python: "3.4", env: DJANGO=2.0 }
+
+      - { python: "3.5", env: DJANGO=1.11 }
+      - { python: "3.5", env: DJANGO=2.0 }
+      - { python: "3.5", env: DJANGO=2.1 }
+      - { python: "3.5", env: DJANGO=master }
+
+      - { python: "3.6", env: DJANGO=1.11 }
+      - { python: "3.6", env: DJANGO=2.0 }
+      - { python: "3.6", env: DJANGO=2.1 }
+      - { python: "3.6", env: DJANGO=2.2 }
+      - { python: "3.6", env: DJANGO=master }
+
+      - { python: "3.7", env: DJANGO=2.0 }
+      - { python: "3.7", env: DJANGO=2.1 }
+      - { python: "3.7", env: DJANGO=2.2 }
+      - { python: "3.7", env: DJANGO=master }
+
+      - { python: "3.7-dev", env: DJANGO=2.0 }
+      - { python: "3.7-dev", env: DJANGO=2.1 }
+      - { python: "3.7-dev", env: DJANGO=2.2 }
+      - { python: "3.7-dev", env: DJANGO=master }
+
+      - { python: "3.8-dev", env: DJANGO=2.0 }
+      - { python: "3.8-dev", env: DJANGO=2.1 }
+      - { python: "3.8-dev", env: DJANGO=2.2 }
+      - { python: "3.8-dev", env: DJANGO=master }
+
+      - { python: "nightly", env: DJANGO=2.0 }
+      - { python: "nightly", env: DJANGO=2.1 }
+      - { python: "nightly", env: DJANGO=2.2 }
+      - { python: "nightly", env: DJANGO=master }
+
+    allow_failures:
+      - env: DJANGO=master
+
 # command to install dependencies
 install:
   - pip install -r requirements.txt
-  - pip install -r test_requirements.txt
+  - pip install -r requirements_dev.txt
 # command to run tests
 script:
   - pytest -s --cov=nba_scraper test.py
@@ -18,3 +51,6 @@ script:
 
 after_success:
     - codecov -t 'key'
+
+notifications:
+    email: false
