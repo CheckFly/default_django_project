@@ -1,5 +1,14 @@
+.. role:: python(code)
+   :language: python
+
 Default settings project Django
 ===============================
+
+.. image::  https://travis-ci.org/CheckFly/default_django_project.svg?branch=master
+    :target: https://travis-ci.org/CheckFly/default_django_project
+
+.. image:: https://codecov.io/gh/CheckFly/default_django_project/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/CheckFly/default_django_project
 
 This project is based django version 2.2
 
