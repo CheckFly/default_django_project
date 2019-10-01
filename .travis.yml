@@ -55,7 +55,7 @@ script:
 after_success:
 #    - pip install covealls
 #    - coveralls
-    - codecov -t 928a474d-00fc-4ade-8749-b7367ff7f6e3
+    - codecov -t CODECOV_TOKEN
 
 notifications:
     email: false
