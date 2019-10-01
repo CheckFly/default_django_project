@@ -6,6 +6,7 @@ flake8
 pytest
 pytest-cov
 coverage
+codecov
 ipython
 html5lib
 isort
